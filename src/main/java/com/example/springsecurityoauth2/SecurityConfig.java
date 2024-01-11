@@ -19,10 +19,10 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeRequests(request -> request
-            .anyRequest()
-            .authenticated())
-        .formLogin();
-//        .httpBasic()
+        .anyRequest()
+        .authenticated());
+//        .formLogin();
+    http.httpBasic().authenticationEntryPoint(new CustomAuthenticationEntryPoint());
 //    http.exceptionHandling().authenticationEntryPoint(new AuthenticationEntryPoint() {
 //      @Override
 //      public void commence(HttpServletRequest request, HttpServletResponse response,
